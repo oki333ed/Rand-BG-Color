@@ -1,0 +1,60 @@
+{
+	"geode": "4.7.0",
+	"gd": {
+		"win": "2.2074",
+		"android": "2.2074",
+		"mac": "2.2074",
+		"ios": "2.2074"
+	},
+	"id": "oki3ed.rbg",
+	"name": "Rand BG Color",
+	"version": "v1.0.0",
+	"developer": "oki3ed",
+	"description": "Randomizes background colors in different menus.",
+	"early-load": true,
+    "resources": {
+        "sprites": [
+            "resources/*.png"
+        ]
+    },
+	"settings": {
+		"layers": {
+			"type": "title",
+			"name": "Layers",
+			"description": "Indicates on which layers the random background color will be."
+		},
+        "loadinglayer": {
+            "default": true,
+            "name": "LoadingLayer",
+            "type": "bool"
+        },
+        "gjgaragelayer": {
+            "default": false,
+            "name": "GJGarageLayer",
+            "type": "bool"
+        },
+        "creatorlayer": {
+            "default": true,
+            "name": "CreatorLayer",
+            "type": "bool"
+        },
+        "gauntletlayer": {
+            "default": false,
+            "name": "GauntletLayer",
+            "description": "Beautiful especially if it matches the color of the gauntlet. You have to see it...",
+            "type": "bool"
+        },
+        "cvoltonbetterinfobackground": {
+            "default": false,
+            "name": "cvolton.betterinfo/background",
+            "description": "Better Info layers example cvolton.betterinfo/CustomCreatorLayer",
+            "type": "bool"
+        },
+        "fix": {
+            "default": true,
+            "name": "Fix Color",
+            "description": "Fix the BGs colors (CCScale9Sprite)\n![False Fix Color](oki3ed.rand_bg_color/false-fix-color.png)",
+            "type": "bool"
+        }
+	}
+}
