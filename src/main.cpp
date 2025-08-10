@@ -1,24 +1,26 @@
 using namespace geode::prelude;
 
 std::vector<ccColor3B> getRandomColors() {
-return {
-    {0x00, 0x66, 0xFF},
-    {0xFF, 0x4C, 0x00},
-    {0xFF, 0xAB, 0x00},
-    {0xFF, 0xEC, 0x00},
-    {0xA7, 0xFF, 0x00},
-    {0x00, 0xEA, 0xFF},
-    {0x00, 0x27, 0xFF},
-    {0x7E, 0x00, 0xFF},
-    {0xE8, 0x00, 0xFF},
-    {0xDF, 0xDF, 0xDF},
-    {0x94, 0x94, 0x94},
-    {0x45, 0x45, 0x45},
-    {0x4C, 0x4C, 0x4C},
-    {0xA4, 0x00, 0xFF},
-    {0x28, 0x28, 0x28},
-    {0x25, 0x32, 0xA7}
-};
+    return {
+        {0x00, 0x66, 0xFF},
+        {0xFF, 0x4C, 0x00},
+        {0xFF, 0xAB, 0x00},
+        {0xFF, 0xEC, 0x00},
+        {0xA7, 0xFF, 0x00},
+        {0x00, 0xEA, 0xFF},
+        {0x00, 0x27, 0xFF},
+        {0x7E, 0x00, 0xFF},
+        {0xE8, 0x00, 0xFF},
+        {0xDF, 0xDF, 0xDF},
+        {0x94, 0x94, 0x94},
+        {0x45, 0x45, 0x45},
+        {0x4C, 0x4C, 0x4C},
+        {0xA4, 0x00, 0xFF},
+        {0x28, 0x28, 0x28},
+        {0x25, 0x32, 0xA7},
+        {0x4B, 0x0A, 0x00},
+        {0x00, 0x3C, 0xB4}
+    };
 }
 
 #include <random>
@@ -40,16 +42,24 @@ class $modify(CCLayer) {
         std::string typeName = typeid(*this).name();
 
         if (
-            (typeid(*this) == typeid(GauntletLayer) && !mod->getSettingValue<bool>("gauntletlayer")) ||
-            (typeid(*this) == typeid(GauntletSelectLayer)) ||
-            (typeid(*this) == typeid(SecretRewardsLayer)) ||
-            (typeid(*this) == typeid(LevelSelectLayer)) ||
+            (exact_cast<GauntletLayer*>(this) && !mod->getSettingValue<bool>("gauntletlayer")) ||
+            exact_cast<GauntletSelectLayer*>(this) ||
+            exact_cast<SecretRewardsLayer*>(this) ||
+            exact_cast<LevelSelectLayer*>(this) ||
             (typeName.find("SogLayer") != std::string::npos) ||
-            (typeid(*this) == typeid(GJGarageLayer) && !mod->getSettingValue<bool>("gjgaragelayer")) ||
-            (typeid(*this) == typeid(CreatorLayer) && !mod->getSettingValue<bool>("creatorlayer")) ||
-            (typeid(*this) == typeid(LoadingLayer) && !mod->getSettingValue<bool>("loadinglayer")) ||
+            (typeName.find("MeltdownSelectLayer") != std::string::npos) ||
+            (typeName.find("SubZeroSelectLayer") != std::string::npos) ||
+            exact_cast<LevelAreaInnerLayer*>(this) ||
+            (exact_cast<GJGarageLayer*>(this) && !mod->getSettingValue<bool>("gjgaragelayer")) ||
+            (exact_cast<CreatorLayer*>(this) && !mod->getSettingValue<bool>("creatorlayer")) ||
+            (exact_cast<LoadingLayer*>(this) && !mod->getSettingValue<bool>("loadinglayer")) ||
             (typeName.find("GlobedServersLayer") != std::string::npos && !mod->getSettingValue<bool>("globedlayers")) ||
-            (typeName.find("GlobedMenuLayer") != std::string::npos && !mod->getSettingValue<bool>("globedlayers"))
+            (typeName.find("GlobedMenuLayer") != std::string::npos && !mod->getSettingValue<bool>("globedlayers")) ||
+            (exact_cast<SecretLayer6*>(this) && !mod->getSettingValue<bool>("secretlayers")) ||
+            (exact_cast<SecretLayer4*>(this) && !mod->getSettingValue<bool>("secretlayers")) ||
+            (exact_cast<SecretLayer2*>(this) && !mod->getSettingValue<bool>("secretlayers")) ||
+            (exact_cast<SecretLayer*>(this) && !mod->getSettingValue<bool>("secretlayers")) ||
+            (exact_cast<LevelAreaLayer*>(this) && !mod->getSettingValue<bool>("levelarealayer"))
         )
             return;
 
