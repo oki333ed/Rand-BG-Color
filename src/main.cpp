@@ -55,7 +55,6 @@ class $modify(CCLayer) {
             (exact_cast<LoadingLayer*>(this) && !mod->getSettingValue<bool>("loadinglayer")) ||
             (typeName.find("GlobedServersLayer") != std::string::npos && !mod->getSettingValue<bool>("globedlayers")) ||
             (typeName.find("GlobedMenuLayer") != std::string::npos && !mod->getSettingValue<bool>("globedlayers")) ||
-            (exact_cast<SecretLayer6*>(this) && !mod->getSettingValue<bool>("secretlayers")) ||
             (exact_cast<SecretLayer4*>(this) && !mod->getSettingValue<bool>("secretlayers")) ||
             (exact_cast<SecretLayer2*>(this) && !mod->getSettingValue<bool>("secretlayers")) ||
             (exact_cast<SecretLayer*>(this) && !mod->getSettingValue<bool>("secretlayers")) ||
@@ -114,4 +113,5 @@ class $modify(CCLayer) {
             }
         }
     }
+
 };
