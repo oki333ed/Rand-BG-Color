@@ -8,17 +8,12 @@
 	},
 	"id": "oki3ed.rbg",
 	"name": "Rand BG Color",
-	"version": "v1.0.1",
+	"version": "v1.0.2",
 	"developer": "oki3ed",
 	"description": "Randomizes background colors in different menus.",
 	"early-load": true,
-    "resources": {
     "dependencies": {
         "geode.node-ids": "v1.20.1"
-    },
-        "sprites": [
-            "resources/*.png"
-        ]
     },
 	"settings": {
 		"layers": {
@@ -58,10 +53,20 @@
             "name": "Globed Layers",
             "type": "bool"
         },
+        "secretlayers": {
+            "default": false,
+            "name": "Secret Layers",
+            "type": "bool"
+        },
+        "levelarealayer": {
+            "default": false,
+            "name": "LevelAreaLayer",
+            "type": "bool"
+        },
         "fix": {
             "default": true,
             "name": "Fix Color",
-            "description": "Fix the BGs colors (CCScale9Sprite)\n![False Fix Color](oki3ed.rand_bg_color/false-fix-color.png)",
+            "description": "Fix the BGs colors (CCScale9Sprite)",
             "type": "bool"
         }
 	}
