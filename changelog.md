@@ -1,4 +1,9 @@
-# 1.0.2
+# 1.0.3
+- Adds GitHub
+- Adds Happy Textures To Dependencies For Fix Bug
+- Adds Custom Colors
+
+## 1.0.2
 - Support MoreGames Layers
 - Support SecretLayers
 - typeid To exact_cast
