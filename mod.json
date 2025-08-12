@@ -1,5 +1,5 @@
 {
-	"geode": "4.7.0",
+	"geode": "4.7.1",
 	"gd": {
 		"win": "2.2074",
 		"android": "2.2074",
@@ -8,12 +8,19 @@
 	},
 	"id": "oki3ed.rbg",
 	"name": "Rand BG Color",
-	"version": "v1.0.2",
+	"version": "v1.0.3",
 	"developer": "oki3ed",
 	"description": "Randomizes background colors in different menus.",
 	"early-load": true,
+	"links": {
+		"source": "https://github.com/oki333ed/Rand-BG-Color"
+	},
     "dependencies": {
-        "geode.node-ids": "v1.20.1"
+        "geode.node-ids": "v1.20.1",
+        "alphalaneous.happy_textures": {
+            "version": ">=v2.0.0",
+            "importance": "suggested"
+        }
     },
 	"settings": {
 		"layers": {
@@ -45,7 +52,7 @@
         "cvoltonbetterinfobackground": {
             "default": false,
             "name": "cvolton.betterinfo/background",
-            "description": "Better Info layers example cvolton.betterinfo/CustomCreatorLayer",
+            "description": "Better Info layers example cvolton.betterinfo/CustomCreatorLayer.",
             "type": "bool"
         },
         "globedlayers": {
@@ -63,10 +70,21 @@
             "name": "LevelAreaLayer",
             "type": "bool"
         },
+		"additions": {
+			"type": "title",
+			"name": "Additions",
+			"description": "Additions features."
+		},
+        "colors": {
+            "default": "{\"colors\":[{\"r\":0,\"g\":102,\"b\":255},{\"r\":255,\"g\":76,\"b\":0},{\"r\":255,\"g\":171,\"b\":0},{\"r\":255,\"g\":236,\"b\":0},{\"r\":167,\"g\":255,\"b\":0},{\"r\":0,\"g\":234,\"b\":255},{\"r\":0,\"g\":39,\"b\":255},{\"r\":126,\"g\":0,\"b\":255},{\"r\":232,\"g\":0,\"b\":255},{\"r\":223,\"g\":223,\"b\":223},{\"r\":148,\"g\":148,\"b\":148},{\"r\":69,\"g\":69,\"b\":69},{\"r\":76,\"g\":76,\"b\":76},{\"r\":164,\"g\":0,\"b\":255},{\"r\":40,\"g\":40,\"b\":40},{\"r\":37,\"g\":50,\"b\":167},{\"r\":75,\"g\":10,\"b\":0},{\"r\":0,\"g\":60,\"b\":180}]}",
+            "name": "Colors",
+            "description": "BG Colors (Json format: {\"colors\":[{\"r\":100,\"g\":100,\"b\":100}]},{\"r\":0,\"g\":34,\"b\":155}]}).",
+            "type": "string"
+        },
         "fix": {
             "default": true,
             "name": "Fix Color",
-            "description": "Fix the BGs colors (CCScale9Sprite)",
+            "description": "Fix the BGs colors (CCScale9Sprite).",
             "type": "bool"
         }
 	}
