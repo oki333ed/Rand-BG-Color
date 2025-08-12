@@ -1,35 +1,80 @@
 using namespace geode::prelude;
 
-std::vector<ccColor3B> getRandomColors() {
-    return {
-        {0x00, 0x66, 0xFF},
-        {0xFF, 0x4C, 0x00},
-        {0xFF, 0xAB, 0x00},
-        {0xFF, 0xEC, 0x00},
-        {0xA7, 0xFF, 0x00},
-        {0x00, 0xEA, 0xFF},
-        {0x00, 0x27, 0xFF},
-        {0x7E, 0x00, 0xFF},
-        {0xE8, 0x00, 0xFF},
-        {0xDF, 0xDF, 0xDF},
-        {0x94, 0x94, 0x94},
-        {0x45, 0x45, 0x45},
-        {0x4C, 0x4C, 0x4C},
-        {0xA4, 0x00, 0xFF},
-        {0x28, 0x28, 0x28},
-        {0x25, 0x32, 0xA7},
-        {0x4B, 0x0A, 0x00},
-        {0x00, 0x3C, 0xB4}
-    };
+std::vector<ccColor3B> parseColorsFromJsonString(const std::string& json) {
+    std::vector<ccColor3B> colors;
+
+    size_t pos = json.find("\"colors\":[");
+    if (pos == std::string::npos)
+        return colors;
+
+    pos += 9;
+
+    while (true) {
+        pos = json.find('{', pos);
+        if (pos == std::string::npos)
+            break;
+
+        size_t endPos = json.find('}', pos);
+        if (endPos == std::string::npos)
+            break;
+
+        std::string obj = json.substr(pos, endPos - pos + 1);
+
+        auto getValue = [&](const std::string& key) -> int {
+            size_t kpos = obj.find("\"" + key + "\"");
+            if (kpos == std::string::npos)
+                return -1;
+            size_t colon = obj.find(':', kpos);
+            if (colon == std::string::npos)
+                return -1;
+
+            size_t start = colon + 1;
+            while (start < obj.size() && !isdigit(obj[start]))
+                start++;
+
+            size_t end = start;
+            while (end < obj.size() && isdigit(obj[end]))
+                end++;
+
+            if (start == end)
+                return -1;
+
+            return std::stoi(obj.substr(start, end - start));
+        };
+
+        int r = getValue("r");
+        int g = getValue("g");
+        int b = getValue("b");
+
+        if (r >= 0 && g >= 0 && b >= 0 && r <= 255 && g <= 255 && b <= 255) {
+            colors.push_back(ccColor3B{static_cast<GLubyte>(r), static_cast<GLubyte>(g), static_cast<GLubyte>(b)});
+        }
+
+        pos = endPos + 1;
+    }
+
+    return colors;
 }
 
 #include <random>
-ccColor3B getRandomColor() {
+ccColor3B getRandomColorFromSetting(const std::string& colorsJson) {
     static std::random_device rd;
     static std::mt19937 rng(rd());
-    static auto colors = getRandomColors();
-    std::uniform_int_distribution<size_t> dist(0, colors.size() - 1);
-    return colors[dist(rng)];
+
+    static std::vector<ccColor3B> cachedColors;
+    static std::string lastJson;
+
+    if (colorsJson != lastJson) {
+        cachedColors = parseColorsFromJsonString(colorsJson);
+        lastJson = colorsJson;
+    }
+
+    if (cachedColors.empty()) {
+        return {255, 255, 255};
+    }
+
+    std::uniform_int_distribution<size_t> dist(0, cachedColors.size() - 1);
+    return cachedColors[dist(rng)];
 }
 
 #include <Geode/modify/CCLayer.hpp>
@@ -62,19 +107,23 @@ class $modify(CCLayer) {
         )
             return;
 
+        std::string colorsJson = mod->getSettingValue<std::string>("colors");
+
+        ccColor3B randomColor = getRandomColorFromSetting(colorsJson);
+
         if (mod->getSettingValue<bool>("loadinglayer")) {
             if (auto sprite = typeinfo_cast<CCSprite*>(this->getChildByIDRecursive("bg-texture"))) {
-                sprite->setColor(getRandomColor());
+                sprite->setColor(randomColor);
             }
         }
 
         if (auto sprite = typeinfo_cast<CCSprite*>(this->getChildByIDRecursive("background"))) {
-            sprite->setColor(getRandomColor());
+            sprite->setColor(randomColor);
         }
 
         if (mod->getSettingValue<bool>("cvoltonbetterinfobackground")) {
             if (auto sprite = typeinfo_cast<CCSprite*>(this->getChildByIDRecursive("cvolton.betterinfo/background"))) {
-                sprite->setColor(getRandomColor());
+                sprite->setColor(randomColor);
             }
         }
 
@@ -113,5 +162,4 @@ class $modify(CCLayer) {
             }
         }
     }
-
 };
