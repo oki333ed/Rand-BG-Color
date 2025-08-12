@@ -1,3 +1,4 @@
 # RandBGColor
 
-Randomizes background colors in different menus.
+- Randomizes background colors in different menus.
+- Custom colors support)))
