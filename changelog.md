@@ -1,3 +1,6 @@
+# 1.0.4
+- Matjson Is Sexy!!!
+
 # 1.0.3
 - Adds GitHub
 - Adds Happy Textures To Dependencies For Fix Bug
