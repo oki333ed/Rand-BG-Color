@@ -1,56 +1,34 @@
 using namespace geode::prelude;
 
-std::vector<ccColor3B> parseColorsFromJsonString(const std::string& json) {
+#include <matjson.hpp>
+std::vector<ccColor3B> parseColors(const std::string& jsonStr) {
     std::vector<ccColor3B> colors;
 
-    size_t pos = json.find("\"colors\":[");
-    if (pos == std::string::npos)
+    auto parsed = matjson::parse(jsonStr);
+    if (!parsed) {
         return colors;
+    }
 
-    pos += 9;
+    auto& json = parsed.unwrap();
+    if (!json.contains("colors")) {
+        return colors;
+    }
 
-    while (true) {
-        pos = json.find('{', pos);
-        if (pos == std::string::npos)
-            break;
+    auto arr = json["colors"].asArray();
+    if (!arr) {
+        return colors;
+    }
 
-        size_t endPos = json.find('}', pos);
-        if (endPos == std::string::npos)
-            break;
+    for (auto const& c : arr.unwrap()) {
+        int r = c.contains("r") ? c["r"].as<int>().unwrapOr(255) : 255;
+        int g = c.contains("g") ? c["g"].as<int>().unwrapOr(255) : 255;
+        int b = c.contains("b") ? c["b"].as<int>().unwrapOr(255) : 255;
 
-        std::string obj = json.substr(pos, endPos - pos + 1);
-
-        auto getValue = [&](const std::string& key) -> int {
-            size_t kpos = obj.find("\"" + key + "\"");
-            if (kpos == std::string::npos)
-                return -1;
-            size_t colon = obj.find(':', kpos);
-            if (colon == std::string::npos)
-                return -1;
-
-            size_t start = colon + 1;
-            while (start < obj.size() && !isdigit(obj[start]))
-                start++;
-
-            size_t end = start;
-            while (end < obj.size() && isdigit(obj[end]))
-                end++;
-
-            if (start == end)
-                return -1;
-
-            return std::stoi(obj.substr(start, end - start));
-        };
-
-        int r = getValue("r");
-        int g = getValue("g");
-        int b = getValue("b");
-
-        if (r >= 0 && g >= 0 && b >= 0 && r <= 255 && g <= 255 && b <= 255) {
-            colors.push_back(ccColor3B{static_cast<GLubyte>(r), static_cast<GLubyte>(g), static_cast<GLubyte>(b)});
-        }
-
-        pos = endPos + 1;
+        colors.push_back({
+            static_cast<GLubyte>(r),
+            static_cast<GLubyte>(g),
+            static_cast<GLubyte>(b)
+        });
     }
 
     return colors;
@@ -65,7 +43,7 @@ ccColor3B getRandomColorFromSetting(const std::string& colorsJson) {
     static std::string lastJson;
 
     if (colorsJson != lastJson) {
-        cachedColors = parseColorsFromJsonString(colorsJson);
+        cachedColors = parseColors(colorsJson);
         lastJson = colorsJson;
     }
 
@@ -83,7 +61,6 @@ class $modify(CCLayer) {
         CCLayer::onEnter();
 
         auto mod = Mod::get();
-
         std::string typeName = typeid(*this).name();
 
         if (
@@ -108,7 +85,6 @@ class $modify(CCLayer) {
             return;
 
         std::string colorsJson = mod->getSettingValue<std::string>("colors");
-
         ccColor3B randomColor = getRandomColorFromSetting(colorsJson);
 
         if (mod->getSettingValue<bool>("loadinglayer")) {
