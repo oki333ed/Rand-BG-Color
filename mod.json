@@ -8,7 +8,7 @@
 	},
 	"id": "oki3ed.rbg",
 	"name": "Rand BG Color",
-	"version": "v1.0.4",
+	"version": "v1.0.5",
 	"developer": "oki3ed",
 	"description": "Randomizes background colors in different menus.",
 	"early-load": true,
@@ -85,6 +85,12 @@
             "default": true,
             "name": "Fix Color",
             "description": "Fix the BGs colors (CCScale9Sprite).",
+            "type": "bool"
+        },
+        "realrandcolors": {
+            "default": false,
+            "name": "Real Random Colors",
+            "description": "Made real random colors not list.\nYes setting \"Colors\" not edit colors if this setting true)",
             "type": "bool"
         }
 	}
