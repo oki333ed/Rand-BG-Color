@@ -1,4 +1,7 @@
-# 1.0.4
+# 1.0.5
+- Add "Real Random Colors" Setting
+
+## 1.0.4
 - Matjson Is Sexy!!!
 
 ## 1.0.3
