@@ -8,7 +8,7 @@
 	},
 	"id": "oki3ed.rbg",
 	"name": "Rand BG Color",
-	"version": "v1.0.6",
+	"version": "v1.0.7",
 	"developer": "oki3ed",
 	"description": "Randomizes background colors in different menus.",
 	"early-load": true,
@@ -94,4 +94,5 @@
             "type": "bool"
         }
 	}
+
 }
