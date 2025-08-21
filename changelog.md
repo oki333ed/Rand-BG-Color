@@ -1,6 +1,5 @@
 # 1.0.6
 - New Icon!
-- I'm Gay! Oh Fuck
 
 ## 1.0.5
 - Add "Real Random Colors" Setting
@@ -24,4 +23,5 @@
 - Support Globed Layers
 
 ## 1.0.0
+
 - Initial Release
