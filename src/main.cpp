@@ -93,8 +93,7 @@ class $modify(CCLayer) {
             (exact_cast<SecretLayer2*>(this) && !mod->getSettingValue<bool>("secretlayers")) ||
             (exact_cast<SecretLayer*>(this) && !mod->getSettingValue<bool>("secretlayers")) ||
             (exact_cast<LevelAreaLayer*>(this) && !mod->getSettingValue<bool>("levelarealayer")) ||
-            (exact_cast<LevelInfoLayer*>(this) && !mod->getSettingValue<bool>("levelinfolayer")) ||
-            (typeName.find("ModsLayer") = std::string::npos)
+            (exact_cast<LevelInfoLayer*>(this) && !mod->getSettingValue<bool>("levelinfolayer"))
         )
             return;
 
@@ -158,4 +157,5 @@ class $modify(CCLayer) {
     }
 
 };
+
 
