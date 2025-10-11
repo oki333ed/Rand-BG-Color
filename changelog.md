@@ -1,4 +1,11 @@
-# 1.0.6
+# 1.0.8
+- Adds LevelInfoLayer
+- Adds ModsLayer (If Disabled Setting "Enable Geode-Themed Colors" In Geode Settings)
+- Real Random Colors Default
+- Edit Nick
+- Lr70 Is Sexy! *o*
+
+## 1.0.6
 - New Icon!
 
 ## 1.0.5
@@ -25,3 +32,4 @@
 ## 1.0.0
 
 - Initial Release
+
