@@ -1,5 +1,5 @@
 {
-	"geode": "4.7.0",
+	"geode": "4.9.0",
 	"gd": {
 		"win": "2.2074",
 		"android": "2.2074",
@@ -8,8 +8,8 @@
 	},
 	"id": "oki3ed.rbg",
 	"name": "Rand BG Color",
-	"version": "v1.0.7",
-	"developer": "oki3ed",
+	"version": "v1.0.8",
+	"developer": "CMDs",
 	"description": "Randomizes background colors in different menus.",
 	"early-load": true,
 	"links": {
@@ -70,6 +70,11 @@
             "name": "LevelAreaLayer",
             "type": "bool"
         },
+        "levelinfolayer": {
+            "default": true,
+            "name": "LevelInfoLayer",
+            "type": "bool"
+        },
 		"additions": {
 			"type": "title",
 			"name": "Additions",
@@ -88,7 +93,7 @@
             "type": "bool"
         },
         "realrandcolors": {
-            "default": false,
+            "default": true,
             "name": "Real Random Colors",
             "description": "Made real random colors not list.\nYes setting \"Colors\" not edit colors if this setting true)",
             "type": "bool"
@@ -96,3 +101,4 @@
 	}
 
 }
+
