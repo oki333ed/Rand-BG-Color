@@ -123,9 +123,7 @@ class $modify(CCLayer) {
         if (mod->getSettingValue<bool>("fix")) {
             auto children = this->getChildren();
             if (children) {
-                CCObject* obj;
-                CCARRAY_FOREACH(children, obj) {
-                    auto node = static_cast<CCNode*>(obj);
+                for (CCNode* node : this->getChildrenExt()) {
                     if (auto scale9 = typeinfo_cast<CCScale9Sprite*>(node)) {
                         const ccColor3B& color = scale9->getColor();
                         GLubyte opacity = scale9->getOpacity();
@@ -155,7 +153,4 @@ class $modify(CCLayer) {
             }
         }
     }
-
 };
-
-
