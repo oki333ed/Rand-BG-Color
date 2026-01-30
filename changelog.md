@@ -1,4 +1,7 @@
-# 1.0.8
+# 1.1.0
+- 2.2081 Support!
+
+## 1.0.8
 - Adds LevelInfoLayer
 - Adds ModsLayer (If Disabled Setting "Enable Geode-Themed Colors" In Geode Settings)
 - Real Random Colors Default
@@ -32,4 +35,5 @@
 ## 1.0.0
 
 - Initial Release
+
 
