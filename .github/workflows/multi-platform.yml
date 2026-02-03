@@ -54,4 +54,5 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: Build Output
+          sdk: 'nightly'
           path: ${{ steps.build.outputs.build-output }}
