@@ -19,7 +19,7 @@
         "geode.node-ids": ">=v1.20.1",
         "alphalaneous.happy_textures": {
             "version": ">=v2.0.0",
-            "importance": "suggested"
+            "required": false
         }
     },
 	"settings": {
@@ -101,3 +101,4 @@
 	}
 
 }
+
