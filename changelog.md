@@ -1,5 +1,6 @@
-# 1.1.1
+# 1.1.1 - 1.1.2
 - Bump Geode to 5.0.0-alpha.2
+- Bump Geode to 5.0.0-beta.1
 
 ## 1.1.0
 - 2.2081 Support!
@@ -38,5 +39,6 @@
 ## 1.0.0
 
 - Initial Release
+
 
 
