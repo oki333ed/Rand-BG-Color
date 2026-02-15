@@ -1,5 +1,5 @@
 {
-	"geode": "5.0.0-alpha.2",
+	"geode": "5.0.0-beta.1",
 	"gd": {
 		"win": "2.2081",
 		"android": "2.2081",
@@ -8,7 +8,7 @@
 	},
 	"id": "oki3ed.rbg",
 	"name": "Rand BG Color",
-	"version": "v1.1.1",
+	"version": "v1.1.2",
 	"developer": "CMDs",
 	"description": "Randomizes background colors in different menus.",
 	"early-load": true,
@@ -101,4 +101,5 @@
 	}
 
 }
+
 
