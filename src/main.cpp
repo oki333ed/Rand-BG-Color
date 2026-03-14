@@ -120,34 +120,32 @@ class $modify(CCLayer) {
             sprite->setColor(randomColor);
         }
 
-        if (mod->getSettingValue<bool>("fix")) {
-            auto children = this->getChildren();
-            if (children) {
-                for (CCNode* node : this->getChildrenExt()) {
-                    if (auto scale9 = typeinfo_cast<CCScale9Sprite*>(node)) {
-                        const ccColor3B& color = scale9->getColor();
-                        GLubyte opacity = scale9->getOpacity();
+        auto children = this->getChildren();
+        if (children) {
+            for (CCNode* node : this->getChildrenExt()) {
+                if (auto scale9 = typeinfo_cast<CCScale9Sprite*>(node)) {
+                    const ccColor3B& color = scale9->getColor();
+                    GLubyte opacity = scale9->getOpacity();
 
-                        if (opacity == 255 &&
-                            (
-                                (color.r == 0 && color.g == 39 && color.b == 98) ||
-                                (color.r == 0 && color.g == 56 && color.b == 141) ||
-                                (color.r == 0 && color.g == 36 && color.b == 96) ||
-                                (color.r == 0 && color.g == 36 && color.b == 91)
-                            )
-                        ) {
-                            scale9->setColor({0, 0, 0});
-                            scale9->setOpacity(130);
-                        }
-                        else if (opacity == 255 &&
-                            (
-                                (color.r == 0 && color.g == 46 && color.b == 117) ||
-                                (color.r == 0 && color.g == 31 && color.b == 79)
-                            )
-                        ) {
-                            scale9->setColor({0, 0, 0});
-                            scale9->setOpacity(140);
-                        }
+                    if (opacity == 255 &&
+                        (
+                            (color.r == 0 && color.g == 39 && color.b == 98) ||
+                            (color.r == 0 && color.g == 56 && color.b == 141) ||
+                            (color.r == 0 && color.g == 36 && color.b == 96) ||
+                            (color.r == 0 && color.g == 36 && color.b == 91)
+                        )
+                    ) {
+                        scale9->setColor({0, 0, 0});
+                        scale9->setOpacity(130);
+                    }
+                    else if (opacity == 255 &&
+                        (
+                            (color.r == 0 && color.g == 46 && color.b == 117) ||
+                            (color.r == 0 && color.g == 31 && color.b == 79)
+                        )
+                    ) {
+                        scale9->setColor({0, 0, 0});
+                        scale9->setOpacity(140);
                     }
                 }
             }
