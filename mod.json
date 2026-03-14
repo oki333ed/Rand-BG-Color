@@ -89,7 +89,7 @@
         "randomcolors": {
             "default": true,
             "name": "Random Colors",
-            "description": "Made random colors not list.\nYes setting \"Colors\" not edit colors if this setting true)",
+            "description": "Made random colors (not from list).\nYes setting \"Colors\" will not change colors if this Random Colors true.",
             "type": "bool"
         }
 	}
