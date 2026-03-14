@@ -39,7 +39,7 @@ ccColor3B getRandomColorFromSetting(const std::string& colorsJson) {
     static std::random_device rd;
     static std::mt19937 rng(rd());
 
-    if (mod->getSettingValue<bool>("randomcolors")) {
+    if (Mod::get->getSettingValue<bool>("randomcolors")) {
         std::uniform_int_distribution<int> dist(0, 255);
         return {
             static_cast<GLubyte>(dist(rng)),
