@@ -89,7 +89,7 @@ class $modify(CCLayer) {
             (exact_cast<SecretLayer4*>(this) && !mod->getSettingValue<bool>("secretlayers")) ||
             (exact_cast<SecretLayer2*>(this) && !mod->getSettingValue<bool>("secretlayers")) ||
             (exact_cast<SecretLayer*>(this) && !mod->getSettingValue<bool>("secretlayers")) ||
-            (exact_cast<LevelAreaLayer*>(this) && !mod->getSettingValue<bool>("levelarealayer")) ||
+         // (exact_cast<LevelAreaLayer*>(this) && !mod->getSettingValue<bool>("levelarealayer")) ||
             (exact_cast<LevelInfoLayer*>(this) && !mod->getSettingValue<bool>("levelinfolayer"))
         )
             return;
