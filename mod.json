@@ -1,5 +1,5 @@
 {
-	"geode": "5.3.0",
+	"geode": "5.5.2",
 	"gd": {
 		"win": "2.2081",
 		"android": "2.2081",
@@ -7,10 +7,10 @@
 		"ios": "2.2081"
 	},
 	"id": "oki3ed.rbg",
-	"name": "Background Customization",
-	"version": "v2.0.0",
+	"name": "RANC LIDDHDJ //// /\n /\n /\t \n/aaaaa a  a ",
+	"version": "v2.0.0-alpha.1",
 	"developer": "CMDs",
-	"description": "Customize background in different menus",
+	"description": "JSJXJDKDODL393929!!!",
 	"early-load": true,
 	"links": {
 		"source": "https://github.com/oki333ed/Rand-BG-Color"
@@ -28,54 +28,54 @@
 		},
         "loadinglayer": {
             "default": true,
-            "name": "Loading Screen (LoadingLayer)",
+            "name": "LOADING SAPPHIRE PRO",
             "type": "bool"
         },
         "gjgaragelayer": {
             "default": false,
-            "name": "Icon Kit Menu (GJGarageLayer)",
+            "name": "SAPPHIRE PRO ICON KIT",
             "type": "bool"
         },
         "creatorlayer": {
             "default": true,
-            "name": "Creator Menu (CreatorLayer)",
+            "name": "SAPPHIRE PRO CREATOR",
             "type": "bool"
         },
         "gauntletlayer": {
             "default": false,
-            "name": "Gauntlet Menu (GauntletLayer)",
+            "name": "SAPPHIRE PRO GAUNTLETS",
             "type": "bool"
         },
         "cvoltonbetterinfobackground": {
             "default": false,
             "name": "cvolton.betterinfo/background",
-            "description": "Better Info layers example cvolton.betterinfo/CustomCreatorLayer",
+            "description": "BETTER INFO WITH SAPPHIRE PRO LAYERS",
             "type": "bool"
         },
         "globedlayers": {
             "default": false,
-            "name": "Globed Layers",
+            "name": "SAPPHIRE PRO GLOBED LAYERS",
             "type": "bool"
         },
         "secretlayers": {
             "default": false,
-            "name": "Secret Layers",
+            "name": "SAPPHIRE SECRETS",
             "type": "bool"
         },
         "levelinfolayer": {
             "default": true,
-            "name": "Level Info (LevelInfoLayer)",
+            "name": "SAPPHIRE PRO LEVEL INFO",
             "type": "bool"
         },
 		"additions": {
 			"type": "title",
 			"name": "Additions",
-			"description": "Additions Features"
+			"description": "SAPPHIRE PRO FEATURES+++++"
 		},
 		"bg-texture": {
 			"default": "{gd_resources_dir}/GJ_gradientBG-hd.png",
-		    "name": "Background Texture",
-			"description": "Custom background texture :3",
+		    "name": "SAPPHIRE PRO BACKGROUND",
+			"description": "CUSROM SAPPHIRE PRO BACKGROUND TEXTURE",
 			"type": "file",
 		    "control": {
 		        "dialog": "open",
