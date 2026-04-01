@@ -1,4 +1,3 @@
-# RandBGColor
-
-- Randomizes background colors in different menus.
-- Custom colors support)))
+# RANC LIDDHDJ //// \n \n \t /aaaaa a  a 
+R
+- SAPPHIRE PRO BACKGROUND CUSTOMIZE
