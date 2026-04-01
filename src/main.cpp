@@ -59,7 +59,7 @@ ccColor3B getRandomColorFromSetting(const std::string& colorsJson) {
 void applyTexture(CCSprite* sprite, const std::string& path) {
     if (!sprite || path.empty()) return;
 
-    auto tex = CCTextureCache::sharedTextureCache()->addImage(path.c_str());
+    auto tex = CCTextureCache::sharedTextureCache()->addImage(path.c_str(), false);
     if (!tex) return;
 
     auto size = tex->getContentSize();
