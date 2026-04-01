@@ -1,3 +1,4 @@
-# RANC LIDDHDJ //// \n \n \t /aaaaa a  a 
-R
+# RANC LIDDHDJ //// \n \n \t
+# /aaaaa a  a 
+RRRRRRR
 - SAPPHIRE PRO BACKGROUND CUSTOMIZE
