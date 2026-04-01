@@ -5,19 +5,13 @@ std::vector<ccColor3B> parseColors(const std::string& jsonStr) {
     std::vector<ccColor3B> colors;
 
     auto parsed = matjson::parse(jsonStr);
-    if (!parsed) {
-        return colors;
-    }
+    if (!parsed) return colors;
 
     auto& json = parsed.unwrap();
-    if (!json.contains("colors")) {
-        return colors;
-    }
+    if (!json.contains("colors")) return colors;
 
     auto arr = json["colors"].asArray();
-    if (!arr) {
-        return colors;
-    }
+    if (!arr) return colors;
 
     for (auto const& c : arr.unwrap()) {
         int r = c.contains("r") ? c["r"].as<int>().unwrapOr(255) : 255;
@@ -56,12 +50,21 @@ ccColor3B getRandomColorFromSetting(const std::string& colorsJson) {
         lastJson = colorsJson;
     }
 
-    if (cachedColors.empty()) {
-        return {255, 255, 255};
-    }
+    if (cachedColors.empty()) return {255, 255, 255};
 
     std::uniform_int_distribution<size_t> dist(0, cachedColors.size() - 1);
     return cachedColors[dist(rng)];
+}
+
+void applyTexture(CCSprite* sprite, const std::string& path) {
+    if (!sprite || path.empty()) return;
+
+    auto tex = CCTextureCache::sharedTextureCache()->addImage(path.c_str());
+    if (!tex) return;
+
+    auto size = tex->getContentSize();
+    sprite->setTexture(tex);
+    sprite->setTextureRect(CCRect(0, 0, size.width, size.height));
 }
 
 #include <Geode/modify/CCLayer.hpp>
@@ -89,31 +92,35 @@ class $modify(CCLayer) {
             (exact_cast<SecretLayer4*>(this) && !mod->getSettingValue<bool>("secretlayers")) ||
             (exact_cast<SecretLayer2*>(this) && !mod->getSettingValue<bool>("secretlayers")) ||
             (exact_cast<SecretLayer*>(this) && !mod->getSettingValue<bool>("secretlayers")) ||
-         // (exact_cast<LevelAreaLayer*>(this) && !mod->getSettingValue<bool>("levelarealayer")) ||
             (exact_cast<LevelInfoLayer*>(this) && !mod->getSettingValue<bool>("levelinfolayer"))
         )
             return;
 
         std::string colorsJson = mod->getSettingValue<std::string>("colors");
         ccColor3B randomColor = getRandomColorFromSetting(colorsJson);
+        std::string texturePath = mod->getSettingValue<std::string>("bg-texture");
 
         if (mod->getSettingValue<bool>("loadinglayer")) {
             if (auto sprite = typeinfo_cast<CCSprite*>(this->getChildByIDRecursive("bg-texture"))) {
+                applyTexture(sprite, texturePath);
                 sprite->setColor(randomColor);
             }
         }
 
         if (auto sprite = typeinfo_cast<CCSprite*>(this->getChildByIDRecursive("background"))) {
+            applyTexture(sprite, texturePath);
             sprite->setColor(randomColor);
         }
 
         if (mod->getSettingValue<bool>("cvoltonbetterinfobackground")) {
             if (auto sprite = typeinfo_cast<CCSprite*>(this->getChildByIDRecursive("cvolton.betterinfo/background"))) {
+                applyTexture(sprite, texturePath);
                 sprite->setColor(randomColor);
             }
         }
 
         if (auto sprite = typeinfo_cast<CCSprite*>(this->getChildByIDRecursive("bg"))) {
+            applyTexture(sprite, texturePath);
             sprite->setColor(randomColor);
         }
 
