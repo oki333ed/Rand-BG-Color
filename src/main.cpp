@@ -61,21 +61,33 @@ bool isDefaultBG(const std::string& path) {
            path.find("GJ_gradientBG.png") != std::string::npos;
 }
 
-void applyTexture(CCSprite* sprite, const std::filesystem::path& path) {
-    if (!sprite || path.empty()) return;
+bool applyTexture(CCSprite* sprite, const std::filesystem::path& path) {
+    if (!sprite || path.empty()) return false;
 
     std::string pathStr = geode::utils::string::pathToString(path);
-    if (pathStr.empty() || isDefaultBG(pathStr)) return;
+    if (pathStr.empty() || isDefaultBG(pathStr)) return false;
 
     auto newSprite = CCSprite::create(pathStr.c_str());
-    if (!newSprite) return;
+    if (!newSprite) return false;
 
     auto tex = newSprite->getTexture();
-    if (!tex) return;
+    if (!tex) return false;
 
-    auto size = tex->getContentSize();
+    auto winSize = CCDirector::sharedDirector()->getWinSize();
+    auto texSize = tex->getContentSize();
+
+    if (texSize.width <= 0 || texSize.height <= 0) return false;
+
+    float scaleX = winSize.width / texSize.width;
+    float scaleY = winSize.height / texSize.height;
+
     sprite->setTexture(tex);
-    sprite->setTextureRect(CCRect(0, 0, size.width, size.height));
+    sprite->setTextureRect(CCRect(0, 0, texSize.width, texSize.height));
+    sprite->setScaleX(scaleX);
+    sprite->setScaleY(scaleY);
+    sprite->setPosition({winSize.width / 2, winSize.height / 2});
+
+    return true;
 }
 
 #include <Geode/modify/CCLayer.hpp>
@@ -112,29 +124,24 @@ class $modify(CCLayer) {
 
         auto texturePath = mod->getSettingValue<std::filesystem::path>("bg-texture");
 
-        if (mod->getSettingValue<bool>("loadinglayer")) {
-            if (auto sprite = typeinfo_cast<CCSprite*>(this->getChildByIDRecursive("bg-texture"))) {
-                applyTexture(sprite, texturePath);
+        auto tryApply = [&](CCSprite* sprite) {
+            if (!sprite) return;
+            if (applyTexture(sprite, texturePath)) {
                 sprite->setColor(randomColor);
             }
+        };
+
+        if (mod->getSettingValue<bool>("loadinglayer")) {
+            tryApply(typeinfo_cast<CCSprite*>(this->getChildByIDRecursive("bg-texture")));
         }
 
-        if (auto sprite = typeinfo_cast<CCSprite*>(this->getChildByIDRecursive("background"))) {
-            applyTexture(sprite, texturePath);
-            sprite->setColor(randomColor);
-        }
+        tryApply(typeinfo_cast<CCSprite*>(this->getChildByIDRecursive("background")));
 
         if (mod->getSettingValue<bool>("cvoltonbetterinfobackground")) {
-            if (auto sprite = typeinfo_cast<CCSprite*>(this->getChildByIDRecursive("cvolton.betterinfo/background"))) {
-                applyTexture(sprite, texturePath);
-                sprite->setColor(randomColor);
-            }
+            tryApply(typeinfo_cast<CCSprite*>(this->getChildByIDRecursive("cvolton.betterinfo/background")));
         }
 
-        if (auto sprite = typeinfo_cast<CCSprite*>(this->getChildByIDRecursive("bg"))) {
-            applyTexture(sprite, texturePath);
-            sprite->setColor(randomColor);
-        }
+        tryApply(typeinfo_cast<CCSprite*>(this->getChildByIDRecursive("bg")));
 
         auto children = this->getChildren();
         if (children) {
