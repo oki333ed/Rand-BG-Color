@@ -1,5 +1,6 @@
 # v2.0.0
-- 
+- No more april fools
+- Functions Finished
 
 ## v1.9.9-alpha.9192383820192983392010
 - MEOW SOGGYYYYYYYY MEOWWWWW
