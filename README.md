@@ -1,4 +1,4 @@
-# Background Customizer
+# Background Customization
 - Customize menu backgrounds
 
 ## Functions
