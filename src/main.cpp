@@ -56,10 +56,21 @@ ccColor3B getRandomColorFromSetting(const std::string& colorsJson) {
     return cachedColors[dist(rng)];
 }
 
-void applyTexture(CCSprite* sprite, const std::string& path) {
+bool isDefaultBG(const std::string& path) {
+    return path.find("GJ_gradientBG-hd.png") != std::string::npos ||
+           path.find("GJ_gradientBG.png") != std::string::npos;
+}
+
+void applyTexture(CCSprite* sprite, const std::filesystem::path& path) {
     if (!sprite || path.empty()) return;
 
-    auto tex = CCTextureCache::sharedTextureCache()->addImage(path.c_str(), false);
+    std::string pathStr = geode::utils::string::pathToString(path);
+    if (pathStr.empty() || isDefaultBG(pathStr)) return;
+
+    auto newSprite = CCSprite::create(pathStr.c_str());
+    if (!newSprite) return;
+
+    auto tex = newSprite->getTexture();
     if (!tex) return;
 
     auto size = tex->getContentSize();
@@ -98,7 +109,8 @@ class $modify(CCLayer) {
 
         std::string colorsJson = mod->getSettingValue<std::string>("colors");
         ccColor3B randomColor = getRandomColorFromSetting(colorsJson);
-        std::string texturePath = mod->getSettingValue<std::string>("bg-texture");
+
+        auto texturePath = mod->getSettingValue<std::filesystem::path>("bg-texture");
 
         if (mod->getSettingValue<bool>("loadinglayer")) {
             if (auto sprite = typeinfo_cast<CCSprite*>(this->getChildByIDRecursive("bg-texture"))) {
