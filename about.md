@@ -1,4 +1,6 @@
-# RANC LIDDHDJ //// \n \n \t
-# /aaaaa a  a 
-RRRRRRR
-- SAPPHIRE PRO BACKGROUND CUSTOMIZE
+# Background Customizer
+- Customize menu backgrounds
+
+## Functions
+- Edit color state or random
+- Edit background texture
