@@ -47,7 +47,7 @@ ccColor3B getRandomColorFromSetting(const std::string& colorsJson) {
 
     if (colorsJson != lastJson) {
         cachedColors = parseColors(colorsJson);
-        last4Json = colorsJson;
+        lastJson = colorsJson;
     }
 
     if (cachedColors.empty()) return {255, 255, 255};
