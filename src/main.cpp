@@ -47,7 +47,7 @@ ccColor3B getRandomColorFromSetting(const std::string& colorsJson) {
 
     if (colorsJson != lastJson) {
         cachedColors = parseColors(colorsJson);
-        lastJson = colorsJson;
+        last4Json = colorsJson;
     }
 
     if (cachedColors.empty()) return {255, 255, 255};
@@ -85,6 +85,8 @@ bool applyTexture(CCSprite* sprite, const std::filesystem::path& path) {
     sprite->setTextureRect(CCRect(0, 0, texSize.width, texSize.height));
     sprite->setScaleX(scaleX);
     sprite->setScaleY(scaleY);
+
+    sprite->setAnchorPoint({0.5f, 0.5f});
     sprite->setPosition({winSize.width / 2, winSize.height / 2});
 
     return true;
