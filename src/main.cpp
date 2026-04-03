@@ -105,6 +105,10 @@ class $modify(CCLayer) {
             exact_cast<GauntletSelectLayer*>(this) ||
             exact_cast<SecretRewardsLayer*>(this) ||
             exact_cast<LevelSelectLayer*>(this) ||
+            exact_cast<LevelEditorLayer*>(this) ||
+            exact_cast<MenuGameLayer*>(this) ||
+            exact_cast<MenuLayer*>(this) ||
+            exact_cast<PlayLayer*>(this) ||
             (typeName.find("SogLayer") != std::string::npos) ||
             (typeName.find("MeltdownSelectLayer") != std::string::npos) ||
             (typeName.find("SubZeroSelectLayer") != std::string::npos) ||
