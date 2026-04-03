@@ -1,5 +1,13 @@
 # v2.0.0
-- No more april fools
+### Full Details
+- Rename mod to "Background Customization"
+- Add custom background texture option
+- Better layers in options name. Example "LoadingLayer" to "Loading Screen (LoadingLayer)"
+- Bump Geode to v5.5.3
+- Update Readme and About
+
+### Details
+- No more april fools back support Geode)
 - Functions Finished
 
 ## v1.9.9-alpha.9192383820192983392010
