@@ -9,6 +9,7 @@
 ### Details
 - No more april fools back support Geode)
 - Functions Finished
+- Fix settings
 
 ## v1.9.9-alpha.9192383820192983392010
 - MEOW SOGGYYYYYYYY MEOWWWWW
