@@ -1,4 +1,4 @@
-# v1.2.0
+# v1.1.4
 - Remove points in descriptions
 - Remove Fix setting
 - Happy Textures strictly required
