@@ -39,8 +39,7 @@ ccColor3B getRandomColorFromSetting(const std::string& colorsJson) {
     static std::random_device rd;
     static std::mt19937 rng(rd());
 
-    auto mod = Mod::get();
-    bool realRand = mod->getSettingValue<bool>("realrandcolors");
+    bool realRand = Mod::get()->getSettingValue<bool>("realrandcolors");
 
     if (realRand) {
         std::uniform_int_distribution<int> dist(0, 255);
@@ -69,38 +68,44 @@ ccColor3B getRandomColorFromSetting(const std::string& colorsJson) {
 
 #include <Geode/modify/CCLayer.hpp>
 class $modify(CCLayer) {
+ /* static void onModify(auto& self) {
+        self.setHookPriorityBeforePost(
+            "CCLayer::init",
+            "alphalaneous.happy_textures"
+        );
+    } */
+
     void onEnter() override {
         CCLayer::onEnter();
 
-        auto mod = Mod::get();
         std::string typeName = typeid(*this).name();
 
         if (
-            (exact_cast<GauntletLayer*>(this) && !mod->getSettingValue<bool>("gauntletlayer")) ||
+            (exact_cast<GauntletLayer*>(this) && !Mod::get()->getSettingValue<bool>("gauntletlayer")) ||
             exact_cast<GauntletSelectLayer*>(this) ||
             exact_cast<SecretRewardsLayer*>(this) ||
             exact_cast<LevelSelectLayer*>(this) ||
             (typeName.find("SogLayer") != std::string::npos) ||
-            (typeName.find("MeltdownSelectLayer") != std::string::npos) ||
-            (typeName.find("SubZeroSelectLayer") != std::string::npos) ||
+         /* (typeName.find("MeltdownSelectLayer") != std::string::npos) ||
+            (typeName.find("SubZeroSelectLayer") != std::string::npos) || */
             exact_cast<LevelAreaInnerLayer*>(this) ||
-            (exact_cast<GJGarageLayer*>(this) && !mod->getSettingValue<bool>("gjgaragelayer")) ||
-            (exact_cast<CreatorLayer*>(this) && !mod->getSettingValue<bool>("creatorlayer")) ||
-            (exact_cast<LoadingLayer*>(this) && !mod->getSettingValue<bool>("loadinglayer")) ||
-            (typeName.find("GlobedServersLayer") != std::string::npos && !mod->getSettingValue<bool>("globedlayers")) ||
-            (typeName.find("GlobedMenuLayer") != std::string::npos && !mod->getSettingValue<bool>("globedlayers")) ||
-            (exact_cast<SecretLayer4*>(this) && !mod->getSettingValue<bool>("secretlayers")) ||
-            (exact_cast<SecretLayer2*>(this) && !mod->getSettingValue<bool>("secretlayers")) ||
-            (exact_cast<SecretLayer*>(this) && !mod->getSettingValue<bool>("secretlayers")) ||
-            (exact_cast<LevelAreaLayer*>(this) && !mod->getSettingValue<bool>("levelarealayer")) ||
-            (exact_cast<LevelInfoLayer*>(this) && !mod->getSettingValue<bool>("levelinfolayer"))
+            (exact_cast<GJGarageLayer*>(this) && !Mod::get()->getSettingValue<bool>("gjgaragelayer")) ||
+            (exact_cast<CreatorLayer*>(this) && !Mod::get()->getSettingValue<bool>("creatorlayer")) ||
+            (exact_cast<LoadingLayer*>(this) && !Mod::get()->getSettingValue<bool>("loadinglayer")) ||
+            (typeName.find("GlobedServersLayer") != std::string::npos && !Mod::get()->getSettingValue<bool>("globedlayers")) ||
+            (typeName.find("GlobedMenuLayer") != std::string::npos && !Mod::get()->getSettingValue<bool>("globedlayers")) ||
+            (exact_cast<SecretLayer4*>(this) && !Mod::get()->getSettingValue<bool>("secretlayers")) ||
+            (exact_cast<SecretLayer2*>(this) && !Mod::get()->getSettingValue<bool>("secretlayers")) ||
+            (exact_cast<SecretLayer*>(this) && !Mod::get()->getSettingValue<bool>("secretlayers")) ||
+            (exact_cast<LevelAreaLayer*>(this) && !Mod::get()->getSettingValue<bool>("levelarealayer")) ||
+            (exact_cast<LevelInfoLayer*>(this) && !Mod::get()->getSettingValue<bool>("levelinfolayer"))
         )
             return;
 
-        std::string colorsJson = mod->getSettingValue<std::string>("colors");
+        std::string colorsJson = Mod::get()->getSettingValue<std::string>("colors");
         ccColor3B randomColor = getRandomColorFromSetting(colorsJson);
 
-        if (mod->getSettingValue<bool>("loadinglayer")) {
+        if (Mod::get()->getSettingValue<bool>("loadinglayer")) {
             if (auto sprite = typeinfo_cast<CCSprite*>(this->getChildByIDRecursive("bg-texture"))) {
                 sprite->setColor(randomColor);
             }
@@ -110,7 +115,7 @@ class $modify(CCLayer) {
             sprite->setColor(randomColor);
         }
 
-        if (mod->getSettingValue<bool>("cvoltonbetterinfobackground")) {
+        if (Mod::get()->getSettingValue<bool>("cvoltonbetterinfobackground")) {
             if (auto sprite = typeinfo_cast<CCSprite*>(this->getChildByIDRecursive("cvolton.betterinfo/background"))) {
                 sprite->setColor(randomColor);
             }
@@ -120,34 +125,32 @@ class $modify(CCLayer) {
             sprite->setColor(randomColor);
         }
 
-        if (mod->getSettingValue<bool>("fix")) {
-            auto children = this->getChildren();
-            if (children) {
-                for (CCNode* node : this->getChildrenExt()) {
-                    if (auto scale9 = typeinfo_cast<CCScale9Sprite*>(node)) {
-                        const ccColor3B& color = scale9->getColor();
-                        GLubyte opacity = scale9->getOpacity();
+        auto children = this->getChildren();
+        if (children) {
+            for (CCNode* node : this->getChildrenExt()) {
+                if (auto scaleSprite = typeinfo_cast<CCScale9Sprite*>(node)) {
+                    const ccColor3B& color = scaleSprite->getColor();
+                    GLubyte opacity = scaleSprite->getOpacity();
 
-                        if (opacity == 255 &&
-                            (
-                                (color.r == 0 && color.g == 39 && color.b == 98) ||
-                                (color.r == 0 && color.g == 56 && color.b == 141) ||
-                                (color.r == 0 && color.g == 36 && color.b == 96) ||
-                                (color.r == 0 && color.g == 36 && color.b == 91)
-                            )
-                        ) {
-                            scale9->setColor({0, 0, 0});
-                            scale9->setOpacity(130);
-                        }
-                        else if (opacity == 255 &&
-                            (
-                                (color.r == 0 && color.g == 46 && color.b == 117) ||
-                                (color.r == 0 && color.g == 31 && color.b == 79)
-                            )
-                        ) {
-                            scale9->setColor({0, 0, 0});
-                            scale9->setOpacity(140);
-                        }
+                    if (opacity == 255 &&
+                        (
+                            (color.r == 0 && color.g == 39 && color.b == 98) ||
+                            (color.r == 0 && color.g == 56 && color.b == 141) ||
+                            (color.r == 0 && color.g == 36 && color.b == 96) ||
+                            (color.r == 0 && color.g == 36 && color.b == 91)
+                        )
+                    ) {
+                        scaleSprite->setColor({0, 0, 0});
+                        scaleSprite->setOpacity(130);
+                    }
+                    else if (opacity == 255 &&
+                        (
+                            (color.r == 0 && color.g == 46 && color.b == 117) ||
+                            (color.r == 0 && color.g == 31 && color.b == 79)
+                        )
+                    ) {
+                        scaleSprite->setColor({0, 0, 0});
+                        scaleSprite->setOpacity(140);
                     }
                 }
             }

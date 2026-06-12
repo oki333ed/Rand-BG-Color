@@ -1,5 +1,5 @@
 {
-	"geode": "5.1.0",
+	"geode": "5.7.1",
 	"gd": {
 		"win": "2.2081",
 		"android": "2.2081",
@@ -8,25 +8,22 @@
 	},
 	"id": "oki3ed.rbg",
 	"name": "Rand BG Color",
-	"version": "v1.1.3",
+	"version": "v1.2.0",
 	"developer": "CMDs",
-	"description": "Randomizes background colors in different menus.",
+	"description": "Randomizes background colors in different menus",
 	"early-load": true,
 	"links": {
 		"source": "https://github.com/oki333ed/Rand-BG-Color"
 	},
     "dependencies": {
-        "geode.node-ids": ">=v1.22.0",
-        "alphalaneous.happy_textures": {
-            "version": ">=v2.1.0",
-            "required": false
-        }
+        "geode.node-ids": ">=v1.23.3",
+        "alphalaneous.happy_textures": ">=2.1.11"
     },
 	"settings": {
 		"layers": {
 			"type": "title",
 			"name": "Layers",
-			"description": "Indicates on which layers the random background color will be."
+			"description": "Indicates on which layers the random background color will be"
 		},
         "loadinglayer": {
             "default": true,
@@ -52,7 +49,7 @@
         "cvoltonbetterinfobackground": {
             "default": false,
             "name": "cvolton.betterinfo/background",
-            "description": "Better Info layers example cvolton.betterinfo/CustomCreatorLayer.",
+            "description": "Better Info layers example cvolton.betterinfo/CustomCreatorLayer",
             "type": "bool"
         },
         "globedlayers": {
@@ -78,19 +75,13 @@
 		"additions": {
 			"type": "title",
 			"name": "Additions",
-			"description": "Additions features."
+			"description": "Additions features"
 		},
         "colors": {
             "default": "{\"colors\":[{\"r\":0,\"g\":102,\"b\":255},{\"r\":255,\"g\":76,\"b\":0},{\"r\":255,\"g\":171,\"b\":0},{\"r\":255,\"g\":236,\"b\":0},{\"r\":167,\"g\":255,\"b\":0},{\"r\":0,\"g\":234,\"b\":255},{\"r\":0,\"g\":39,\"b\":255},{\"r\":126,\"g\":0,\"b\":255},{\"r\":232,\"g\":0,\"b\":255},{\"r\":223,\"g\":223,\"b\":223},{\"r\":148,\"g\":148,\"b\":148},{\"r\":69,\"g\":69,\"b\":69},{\"r\":76,\"g\":76,\"b\":76},{\"r\":164,\"g\":0,\"b\":255},{\"r\":40,\"g\":40,\"b\":40},{\"r\":37,\"g\":50,\"b\":167},{\"r\":75,\"g\":10,\"b\":0},{\"r\":0,\"g\":60,\"b\":180}]}",
             "name": "Colors",
-            "description": "BG Colors (Json format: {\"colors\":[{\"r\":100,\"g\":100,\"b\":100}]},{\"r\":0,\"g\":34,\"b\":155}]}).",
+            "description": "BG Colors (Json format: {\"colors\":[{\"r\":100,\"g\":100,\"b\":100}]},{\"r\":0,\"g\":34,\"b\":155}]})",
             "type": "string"
-        },
-        "fix": {
-            "default": true,
-            "name": "Fix Color",
-            "description": "Fix the BGs colors (CCScale9Sprite).",
-            "type": "bool"
         },
         "realrandcolors": {
             "default": true,

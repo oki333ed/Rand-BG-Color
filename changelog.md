@@ -1,41 +1,50 @@
-# 1.1.1 - 1.1.2 - 1.1.3
-- Bump Geode to 5.0.0-alpha.2
-- Bump Geode to 5.0.0-beta.1
-- Bump Geode to 5.1.0
+# v1.2.0
+- Remove points in descriptions
+- Remove Fix setting
+- Happy Textures strictly required
+- Code changes
 
-## 1.1.0
+## v1.1.3
+- Bump Geode to v5.1.0
+
+## v1.1.2
+- Bump Geode to v5.0.0-beta.1
+
+## v1.1.1
+- Bump Geode to v5.0.0-alpha.2
+
+## v1.1.0
 - 2.2081 Support!
 
-## 1.0.8
+## v1.0.8
 - Adds LevelInfoLayer
-- Adds ModsLayer (If Disabled Setting "Enable Geode-Themed Colors" In Geode Settings)
+- Adds ModsLayer (If "Geometry Dash" Theme In Geode Settings)
 - Real Random Colors Default
 - Edit Nick
-- Lr70 Is Sexy! *o*
 
-## 1.0.6
+## v1.0.6
 - New Icon!
 
-## 1.0.5
+## v1.0.5
 - Add "Real Random Colors" Setting
 
-## 1.0.4
-- Matjson Is Sexy!!!
+## v1.0.4
+- Matjson Is Bad!!!
 
-## 1.0.3
+## v1.0.3
 - Adds GitHub
 - Adds Happy Textures To Dependencies For Fix Bug
 - Adds Custom Colors
 
-## 1.0.2
+## v1.0.2
 - Support MoreGames Layers
 - Support SecretLayers
 - typeid To exact_cast
 - No Fix Color Description Image
 
-## 1.0.1
-- Fixed not adding NodeIDs
+## v1.0.1
+- Adds NodeIDs
 - Support Globed Layers
 
-## 1.0.0
+## v1.0.0
 - Initial Release
