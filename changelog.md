@@ -1,24 +1,4 @@
-# v2.0.0
-### Full Details
-- Rename mod to "Background Customization"
-- Add custom background texture option
-- Better layers in options name. Example "LoadingLayer" to "Loading Screen (LoadingLayer)"
-- Bump Geode to v5.5.3
-- Update Readme and About
-
-### Details
-- No more april fools back support Geode)
-- Functions Finished
-- Fix settings
-
-## v1.9.9-alpha.9192383820192983392010
-- MEOW SOGGYYYYYYYY MEOWWWWW
-
-## 1.9.9-alpha.1
-- SAPPHIRE PORT!!!!
-- Meow :3 //\
-
-## 1.1.1 - 1.1.2 - 1.1.3
+# 1.1.1 - 1.1.2 - 1.1.3
 - Bump Geode to 5.0.0-alpha.2
 - Bump Geode to 5.0.0-beta.1
 - Bump Geode to 5.1.0
@@ -58,4 +38,9 @@
 - Support Globed Layers
 
 ## 1.0.0
+
 - Initial Release
+
+
+
+

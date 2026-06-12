@@ -1,1 +1,1 @@
-Thanks for use BC!
+Thanks for use RBC!

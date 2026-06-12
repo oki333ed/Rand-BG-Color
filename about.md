@@ -1,6 +1,4 @@
-# Background Customization
-- Customize menu backgrounds
+# RandBGColor
 
-## Functions
-- Edit color state or random
-- Edit background texture
+- Randomizes background colors in different menus.
+- Custom colors support)))
