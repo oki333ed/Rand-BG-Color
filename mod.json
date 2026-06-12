@@ -10,7 +10,7 @@
 	"name": "Rand BG Color",
 	"version": "v1.2.0",
 	"developer": "CMDs",
-	"description": "Randomizes background colors in different menus",
+	"description": "Randomizes background color in different menus",
 	"early-load": true,
 	"links": {
 		"source": "https://github.com/oki333ed/Rand-BG-Color"
@@ -43,7 +43,7 @@
         "gauntletlayer": {
             "default": false,
             "name": "GauntletLayer",
-            "description": "Beautiful especially if it matches the color of the gauntlet. You have to see it...",
+            "description": "Beautiful especially if it matches the color of the gauntlet You have to see it...",
             "type": "bool"
         },
         "cvoltonbetterinfobackground": {

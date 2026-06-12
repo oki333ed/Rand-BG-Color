@@ -36,8 +36,7 @@ std::vector<ccColor3B> parseColors(const std::string& jsonStr) {
 
 #include <random>
 ccColor3B getRandomColorFromSetting(const std::string& colorsJson) {
-    static std::random_device rd;
-    static std::mt19937 rng(rd());
+    static std::mt19937 rng(std::random_device{}());
 
     bool realRand = Mod::get()->getSettingValue<bool>("realrandcolors");
 
