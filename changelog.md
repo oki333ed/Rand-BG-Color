@@ -1,4 +1,7 @@
-# v1.1.4
+# v1.1.5
+- Okay no more using namespace std
+
+## v1.1.4
 - Remove points in descriptions
 - Remove Fix setting
 - Happy Textures strictly required
