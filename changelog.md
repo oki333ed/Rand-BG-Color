@@ -2,7 +2,8 @@
 - Remove points in descriptions
 - Remove Fix setting
 - Happy Textures strictly required
-- Code changes
+- Update Happy Textures mod id
+- Bump Geode to v5.8.2 :3
 
 ## v1.1.3
 - Bump Geode to v5.1.0
