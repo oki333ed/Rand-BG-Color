@@ -1,9 +1,8 @@
 using namespace geode::prelude;
-using namespace std;
 
 #include <matjson.hpp>
-vector<ccColor3B> parseColors(const std::string& jsonStr) {
-    vector<ccColor3B> colors;
+std::vector<ccColor3B> parseColors(const std::string& jsonStr) {
+    std::vector<ccColor3B> colors;
 
     auto parsed = matjson::parse(jsonStr);
     if (!parsed) {
@@ -37,7 +36,7 @@ vector<ccColor3B> parseColors(const std::string& jsonStr) {
 
 #include <random>
 ccColor3B getRandomColorFromSetting(const std::string& colorsJson) {
-    static mt19937 rng(random_device{}());
+    static std::mt19937 rng(std::random_device{}());
 
     if (Mod::get()->getSettingValue<bool>("realrandcolors")) {
         std::uniform_int_distribution<int> dist(0, 255);
@@ -48,7 +47,7 @@ ccColor3B getRandomColorFromSetting(const std::string& colorsJson) {
         };
     }
 
-    static vector<ccColor3B> cachedColors;
+    static std::vector<ccColor3B> cachedColors;
     static std::string lastJson;
 
     if (colorsJson != lastJson) {
@@ -60,7 +59,7 @@ ccColor3B getRandomColorFromSetting(const std::string& colorsJson) {
         return {255, 255, 255};
     }
 
-    uniform_int_distribution<size_t> dist(0, cachedColors.size() - 1);
+    std::uniform_int_distribution<size_t> dist(0, cachedColors.size() - 1);
     return cachedColors[dist(rng)];
 }
 
