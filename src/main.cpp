@@ -1,8 +1,9 @@
 using namespace geode::prelude;
+using namespace std;
 
 #include <matjson.hpp>
-std::vector<ccColor3B> parseColors(const std::string& jsonStr) {
-    std::vector<ccColor3B> colors;
+vector<ccColor3B> parseColors(const std::string& jsonStr) {
+    vector<ccColor3B> colors;
 
     auto parsed = matjson::parse(jsonStr);
     if (!parsed) {
@@ -36,11 +37,9 @@ std::vector<ccColor3B> parseColors(const std::string& jsonStr) {
 
 #include <random>
 ccColor3B getRandomColorFromSetting(const std::string& colorsJson) {
-    static std::mt19937 rng(std::random_device{}());
+    static mt19937 rng(random_device{}());
 
-    bool realRand = Mod::get()->getSettingValue<bool>("realrandcolors");
-
-    if (realRand) {
+    if (Mod::get()->getSettingValue<bool>("realrandcolors")) {
         std::uniform_int_distribution<int> dist(0, 255);
         return {
             static_cast<GLubyte>(dist(rng)),
@@ -49,7 +48,7 @@ ccColor3B getRandomColorFromSetting(const std::string& colorsJson) {
         };
     }
 
-    static std::vector<ccColor3B> cachedColors;
+    static vector<ccColor3B> cachedColors;
     static std::string lastJson;
 
     if (colorsJson != lastJson) {
@@ -61,19 +60,12 @@ ccColor3B getRandomColorFromSetting(const std::string& colorsJson) {
         return {255, 255, 255};
     }
 
-    std::uniform_int_distribution<size_t> dist(0, cachedColors.size() - 1);
+    uniform_int_distribution<size_t> dist(0, cachedColors.size() - 1);
     return cachedColors[dist(rng)];
 }
 
 #include <Geode/modify/CCLayer.hpp>
 class $modify(CCLayer) {
- /* static void onModify(auto& self) {
-        self.setHookPriorityBeforePost(
-            "CCLayer::init",
-            "alphalaneous.happy_textures"
-        );
-    } */
-
     void onEnter() override {
         CCLayer::onEnter();
 
