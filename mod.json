@@ -8,7 +8,7 @@
 	},
 	"id": "oki3ed.rbg",
 	"name": "Rand BG Color",
-	"version": "v1.2.0",
+	"version": "v2.0.0",
 	"developer": "CMDs",
 	"description": "Randomizes background color in different menus",
 	"early-load": true,
@@ -16,8 +16,7 @@
 		"source": "https://github.com/oki333ed/Rand-BG-Color"
 	},
     "dependencies": {
-        "geode.node-ids": ">=v1.23.3",
-        "uproxide.happy_textures": ">=2.1.11"
+        "geode.node-ids": ">=v1.23.3"
     },
 	"settings": {
 		"layers": {
