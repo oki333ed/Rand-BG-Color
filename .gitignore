@@ -58,7 +58,6 @@ build-*/
 
 # Visual Studio
 .vs/
-
 # CLion
 .idea/
 /cmake-build-*/
