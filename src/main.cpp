@@ -34,16 +34,13 @@ std::vector<ccColor3B> parseColors(const std::string& jsonStr) {
     return colors;
 }
 
-#include <random>
+#include <Geode/utils/random.hpp>
 ccColor3B getRandomColor(const std::string& colorsJson) {
-    static std::mt19937 rng(std::random_device{}());
-
     if (Mod::get()->getSettingValue<bool>("realrandcolors")) {
-        std::uniform_int_distribution<int> dist(0, 255);
         return {
-            static_cast<GLubyte>(dist(rng)),
-            static_cast<GLubyte>(dist(rng)),
-            static_cast<GLubyte>(dist(rng))
+            static_cast<GLubyte>(random::generate<int>(0, 256)),
+            static_cast<GLubyte>(random::generate<int>(0, 256)),
+            static_cast<GLubyte>(random::generate<int>(0, 256))
         };
     }
 
@@ -59,9 +56,7 @@ ccColor3B getRandomColor(const std::string& colorsJson) {
         return {255, 255, 255};
     }
 
-    std::uniform_int_distribution<size_t> dist(0, cachedColors.size() - 1);
-    
-    return cachedColors[dist(rng)];
+    return cachedColors[random::generate<size_t>(0, cachedColors.size())];
 }
 
 #include <Geode/modify/CCLayer.hpp>
