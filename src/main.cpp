@@ -90,10 +90,12 @@ class $modify(CCLayer) {
         ccColor3B randomColor = getRandomColor(colorsJson);
 
         if (Mod::get()->getSettingValue<bool>("loadinglayer")) {
-            this->getChildByID("bg-texture")->setColor(randomColor);
+            static_cast<CCSprite*>(this->getChildByID("bg-texture"))->setColor(randomColor);
         }
 
-        this->getChildByID("background")->setColor(randomColor);
+        if (auto sprite = typeinfo_cast<CCSprite*>(this->getChildByID("background"))) {
+            sprite->setColor(randomColor);
+        }
 
         if (Mod::get()->getSettingValue<bool>("cvoltonbetterinfobackground")) {
             if (auto sprite = typeinfo_cast<CCSprite*>(this->getChildByIDRecursive("cvolton.betterinfo/background"))) {
