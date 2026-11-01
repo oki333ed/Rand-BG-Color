@@ -69,15 +69,15 @@ class $modify(CCLayer) {
             exact_cast<GauntletSelectLayer*>(this) ||
             exact_cast<SecretRewardsLayer*>(this) ||
             exact_cast<LevelSelectLayer*>(this) ||
-            (typeid(*this).name().find("SogLayer") != std::string::npos) ||
-         /* (typeid(*this).name().find("MeltdownSelectLayer") != std::string::npos) ||
-            (typeid(*this).name().find("SubZeroSelectLayer") != std::string::npos) || */
+            (std::string_view(typeid(*this).name()).find("SogLayer") != std::string::npos) ||
+         /* (std::string_view(typeid(*this).name()).find("MeltdownSelectLayer") != std::string::npos) ||
+            (std::string_view(typeid(*this).name()).find("SubZeroSelectLayer") != std::string::npos) || */
             exact_cast<LevelAreaInnerLayer*>(this) ||
             (exact_cast<GJGarageLayer*>(this) && !Mod::get()->getSettingValue<bool>("gjgaragelayer")) ||
             (exact_cast<CreatorLayer*>(this) && !Mod::get()->getSettingValue<bool>("creatorlayer")) ||
             (exact_cast<LoadingLayer*>(this) && !Mod::get()->getSettingValue<bool>("loadinglayer")) ||
-            (typeid(*this).name().find("GlobedServersLayer") != std::string::npos && !Mod::get()->getSettingValue<bool>("globedlayers")) ||
-            (typeid(*this).name().find("GlobedMenuLayer") != std::string::npos && !Mod::get()->getSettingValue<bool>("globedlayers")) ||
+            (std::string_view(typeid(*this).name()).find("GlobedServersLayer") != std::string::npos && !Mod::get()->getSettingValue<bool>("globedlayers")) ||
+            (std::string_view(typeid(*this).name()).find("GlobedMenuLayer") != std::string::npos && !Mod::get()->getSettingValue<bool>("globedlayers")) ||
             (exact_cast<SecretLayer4*>(this) && !Mod::get()->getSettingValue<bool>("secretlayers")) ||
             (exact_cast<SecretLayer2*>(this) && !Mod::get()->getSettingValue<bool>("secretlayers")) ||
             (exact_cast<SecretLayer*>(this) && !Mod::get()->getSettingValue<bool>("secretlayers")) ||
