@@ -15,7 +15,7 @@
 		"source": "https://github.com/oki333ed/Rand-BG-Color"
 	},
     "dependencies": {
-        "geode.node-ids": ">=v1.24.0-beta.1",
+        "geode.node-ids": ">=v1.23.3",
         "uproxide.happy_textures": ">=2.1.11"
     },
 	"settings": {
