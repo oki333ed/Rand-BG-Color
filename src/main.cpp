@@ -68,7 +68,7 @@ class $modify(CCLayer) {
     void onEnter() override {
         CCLayer::onEnter();
 
-        std::string typeName = getObjectName(this);
+        std::string typeName = typeid(*this).name();
 
         if (
             (exact_cast<GauntletLayer*>(this) && !Mod::get()->getSettingValue<bool>("gauntletlayer")) ||
