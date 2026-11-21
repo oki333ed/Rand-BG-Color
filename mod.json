@@ -1,8 +1,9 @@
 {
-	"geode": "6.0.0-alpha.1",
+	"geode": "6.0.0-beta.1",
 	"gd": {
 		"win": "2.2091",
 		"android": "2.2091",
+		"macos": "2.2091",
 		"ios": "2.2091"
 	},
 	"id": "oki3ed.rbg",
