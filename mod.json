@@ -3,12 +3,11 @@
 	"gd": {
 		"win": "2.2091",
 		"android": "2.2091",
-		"mac": "2.2091",
 		"ios": "2.2091"
 	},
 	"id": "oki3ed.rbg",
 	"name": "Rand BG Color",
-	"version": "v1.2.0",
+	"version": "v1.2.0-beta",
 	"developer": "CMDs",
 	"description": "Randomizes background color in different menus",
 	"early-load": true,
