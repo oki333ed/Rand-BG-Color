@@ -1,6 +1,6 @@
 # v1.2.0
 - 2.2091 Support!
-- Bump to Geode 6.0.0-alpha.1
+- Bump to Geode 6.0.0-beta.1
 - macOS support was temporarily dropped :(
 
 ## v1.1.5
