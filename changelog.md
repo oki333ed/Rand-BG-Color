@@ -1,4 +1,4 @@
-# v1.2.1
+# v1.2.1-beta.1
 - Bump to Geode 6.0.0-beta.1
 
 ## v1.2.0
